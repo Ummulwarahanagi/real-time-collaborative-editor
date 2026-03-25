@@ -12,7 +12,7 @@ function App() {
   const clientRef = useRef(null);
   const isRemote = useRef(false);
   const saveTimeout = useRef(null);
-  const sendTimeout = useRef(null); // ✅ NEW
+  const sendTimeout = useRef(null); 
 
   const userId = useRef("User_" + Math.floor(Math.random() * 1000));
 
@@ -23,7 +23,7 @@ function App() {
         if (data.content) setContent(data.content);
       })
       .catch(() => {
-        setStatus("⚠️ Cannot load document");
+        setStatus("Cannot load document");
       });
   };
 
@@ -97,7 +97,7 @@ function App() {
       return;
     }
 
-    // ✅ THROTTLED REAL-TIME SYNC (NEW)
+    // THROTTLED REAL-TIME SYNC 
     if (sendTimeout.current) {
       clearTimeout(sendTimeout.current);
     }
@@ -111,7 +111,7 @@ function App() {
       });
     }, 200);
 
-    // 🔥 DEBOUNCED SAVE (UNCHANGED)
+    
     if (saveTimeout.current) {
       clearTimeout(saveTimeout.current);
     }
@@ -133,7 +133,7 @@ function App() {
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <div style={{ flex: 3, padding: "20px" }}>
-        <h2>📝 Collaborative Editor</h2>
+        <h2>Collaborative Editor</h2>
         <p>Logged in as: {userId.current}</p>
 
         <p>{status}</p>
@@ -142,7 +142,7 @@ function App() {
       </div>
 
       <div style={{ flex: 1, borderLeft: "1px solid #ccc", padding: "20px" }}>
-        <h3>👥 Active Users</h3>
+        <h3>Active Users</h3>
 
         {users.map((user, index) => (
           <div
