@@ -28,7 +28,7 @@ public class EditorController {
     // USERS
     private static Map<String, Map<String, String>> users = new ConcurrentHashMap<>();
 
-    private int changeCounter = 0; // ✅ NEW (for DB optimization)
+    private int changeCounter = 0; 
 
     private String getRandomColor() {
         String[] colors = { "#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#FFC300" };
@@ -62,15 +62,15 @@ public class EditorController {
         broadcastUsers();
     }
 
-    // 🔥 SIMPLE & STABLE SYNC (OPTIMIZED)
+    
     @MessageMapping("/edit")
     public void edit(Map<String, Object> message) {
 
         String content = (String) message.get("content");
 
-        changeCounter++; // ✅ NEW
+        changeCounter++; 
 
-        // ✅ SAVE ONLY EVERY 5 CHANGES
+        
         if (changeCounter % 5 == 0) {
             repo.save(new EditorDocument(DOC_ID, content));
         }
